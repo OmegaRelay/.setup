@@ -1,0 +1,11 @@
+[user]
+	name = Theis Mejnertsen
+	email = theis@mejnertsen.com
+
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	cm = commit
+	cmm = "commit -m"
+	r = reset
