@@ -1,3 +1,6 @@
+### PATH Additions ###
+export PATH="$PATH":~/bin
+
 ### compinstall ###
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' list-colors ''
