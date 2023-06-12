@@ -1,13 +1,6 @@
-[user]
-	name = Theis Mejnertsen
-	email = theis@mejnertsen.com
-
-[alias]
-	st = status
-	br = branch
-	co = checkout
-	cm = commit
-	cmm = "commit -m"
-	r = reset
-[pull]
-	rebase = true
+[includeIf "gitdir:~/Documents/personal/projects/"]
+	path = ~/.gitconfig-personal
+[includeIf "gitdir:~/Documents/projects/"]
+	path = ~/.gitconfig-work
+[include]
+	path = ~/.gitconfig-general
