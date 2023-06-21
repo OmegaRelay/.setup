@@ -22,9 +22,10 @@ INDEX=0
 printf "Creating symbolic links, from %s...\n" "$DIR"
 for FILE in ${END_FILES[@]}; do
 	printf "%s\n" "$FILE"
-	if [[ -f "$FILE" ]]; then
+	if [[ -f "$FILE" ]] || [[ -L "$FILE" ]]; then
 		rm "$FILE"
 	fi
+
 	ln -s ${ORIG_FILES[INDEX]}	"$FILE"
 	((INDEX++))
 done
