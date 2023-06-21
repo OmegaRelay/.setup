@@ -19,21 +19,16 @@ git clone git@github.com:OmegaRelay/.dotfiles.git
 ```
 
 
-3. Create symlinks in the Home directory to the real files in the repo.
+3. move to the git repo directory and run the ```scripts/create-sym-links.sh``` file
 
 ```zsh
-# There are better and less manual ways to do this;
-# investigate install scripts and bootstrapping tools.
-
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+cd .dotfiles
+./scripts/create-sym-links.sh
 ```
 
 4. Create a local .gitconfig file named ```.gitconfig-local``` to set any local machine configurations such as users for specific folders, etc...
 
 ## TODO List
 
-- Create a bootstrap script.
 - Make a checklist of steps to decommission your computer before wiping your hard drive.
 - Find inspiration and examples in other Dotfiles repositories at [dotfiles.github.io](https://dotfiles.github.io/).
-)!
