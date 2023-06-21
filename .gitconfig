@@ -1,6 +1,13 @@
-[includeIf "gitdir:~/Documents/personal/projects/"]
-	path = ~/.gitconfig-personal
-[includeIf "gitdir:~/Documents/projects/"]
-	path = ~/.gitconfig-work
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	cm = commit
+	cmm = "commit -m"
+	r = reset
+	rst = "reset --staged"
+[pull]
+	rebase = true
+
 [include]
-	path = ~/.gitconfig-general
+	path = ~/.gitconfig-local
