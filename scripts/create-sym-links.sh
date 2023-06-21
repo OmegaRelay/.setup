@@ -19,8 +19,6 @@ END_FILES=(
 
 INDEX=0
 
-cd "$DIR"
-
 printf "Creating symbolic links, from %s...\n" "$DIR"
 for FILE in ${END_FILES[@]}; do
 	printf "%s\n" "$FILE"
