@@ -1,6 +1,6 @@
-" remap escape to §
-inoremap § <esc>
-vnoremap § <esc>
+" escape in insert and visual mode
+inoremap jj <esc>
+vnoremap jj <esc>
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
