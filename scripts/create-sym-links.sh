@@ -7,14 +7,12 @@ ORIG_FILES=(
 	"$DIR"/.zshrc
 	"$DIR"/.gitconfig
 	"$DIR"/.vimrc
-	"$DIR"/vscode-settings.json
 )
 
 END_FILES=(
 	"$HOME"/.zshrc	
 	"$HOME"/.gitconfig
 	"$HOME"/.vimrc
-	"$HOME"/.config/Code/User/settings.json
 )
 
 INDEX=0
