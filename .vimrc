@@ -1,6 +1,6 @@
 " escape in insert and visual mode
 inoremap jj <esc>
-vnoremap jj <esc>
+vnoremap ;; <esc>
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
