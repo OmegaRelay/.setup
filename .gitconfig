@@ -1,3 +1,5 @@
+[init] 
+	defaultBranch=master
 [alias]
 	st = status
 	br = branch
@@ -7,13 +9,5 @@
 	r = reset
 	rsh = "reset --hard"
 	rst = "restore --staged"
-[pull]
-	rebase = true
 [include]
 	path = ~/.gitconfig-local
-[difftool "sourcetree"]
-	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
