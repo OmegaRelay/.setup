@@ -20,8 +20,8 @@ syntax on
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
 
-" Highlight cursor line underneath the cursor vertically.
-set cursorcolumn
+" Show line numbers
+set number
 
 " Set shift width to 4 spaces.
 set shiftwidth=4
