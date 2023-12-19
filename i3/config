@@ -25,22 +25,18 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i ~/Pictures/wallpapers/bg.png
+
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
 #set $refresh_i3status killall -SIGUSR1 i3status
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Audio mixer controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 10%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 10%-
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle-mute
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -56,7 +52,7 @@ bindsym XF86AudioPrev exec playerctl previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -131,7 +127,7 @@ set $ws4 "4 "
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8 "
 set $ws9 "9"
 set $ws10 "10"
 
@@ -174,10 +170,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -195,13 +191,14 @@ bindsym $mod+r mode "resize"
 
 # Window Colours
 set $bgcolor		#00897b33
+set $abgcolor		#00897b
 set $ibgcolor 		#363636
 set $ubgcolor		#ff0000
 set $textcolor		#ffffff
 set $itextcolor		#969696
 
 # 							border				background				text				indicator
-client.focused				$bgcolor			$bgcolor				$textcolor			$bgcolor
+client.focused				$abgcolor			$abgcolor				$textcolor			$abgcolor
 client.unfocused			$ibgcolor			$ibgcolor				$itextcolor			$ibgcolor
 client.focused_inactive		$ibgcolor			$ibgcolor				$itextcolor			$ibgcolor
 client.urgent				$ubgcolor			$ubgcolor				$textcolor			$ubgcolor
@@ -218,7 +215,7 @@ bar {
 			background 	$bgcolor
 			separator	#282828
 # 									border				background				text				
-			focused_workspace 		$bgcolor			$bgcolor				$textcolor
+			focused_workspace 		$abgcolor			$abgcolor				$textcolor
 			inactive_workspace		$ibgcolor			$ibgcolor				$itextcolor
 			urgent_workspace		$ubgcolor			$ubgcolor				$textcolor
 	}
@@ -227,19 +224,20 @@ bar {
 
 
 # Display wallpaper
-#exec_always feh --bg-fill ~/Pictures/wallpapers/bg.png
+exec_always feh --bg-fill ~/Pictures/wallpapers/bg.png
 
-# Keybinding for i3Lock
-bindsym $mod+semicolon exec i3lock -c \#000000
+# Keybinding to sleep
+bindsym $mod+semicolon exec xset dpms force standby
 
 # Assign programs to workspaces
-for_window [class="firefox"] move to workspace $ws2
+for_window [class="Firefox"] move to workspace $ws2
 for_window [class="Code"] move to workspace $ws3
 for_window [class="xournalpp"] move to workspace $ws4
+for_window [class="quartus"] move to workspace $ws8
 
 # Window Compositor
-#exec_always picom 
+exec_always picom 
 
 # Remove titlebars
-#for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 3
 
