@@ -1,6 +1,3 @@
-### General PATH Additions ###
-export PATH="$PATH":/opt/bin:~/.local/bin
-
 ### compinstall ###
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' list-colors ''
@@ -37,6 +34,7 @@ bindkey -e
 alias ll="ls -lah --color=auto"
 alias copy="xclip -sel clip"
 alias ssh-keygen="ssh-keygen -t ed25519"
+alias nv="nvim"
 
 
 ### Prompt setup ###
@@ -47,7 +45,7 @@ PROMPT='
 %F{green}%n%f:'$DIR' ${vcs_info_msg_0_} 
 %F{red}%w %T%f %(!. §.->) '
 
-if [[ $(which neofetch != "") ]]; then
-    # Add a cool start to every terminal
-    neofetch
-fi
+# Add devinfo to start of each terminal
+# checks neofetch exists and then runs neofetch
+[ -z $(which neofetch) ] || neofetch --color_blocks off
+
