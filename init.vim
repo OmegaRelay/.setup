@@ -7,17 +7,17 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'https://github.com/preservim/nerdtree.git'
 	Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 	Plug 'https://github.com/ryanoasis/vim-devicons'
-	Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-	Plug 'https://github.com/akinsho/toggleterm.nvim.git'
+"	Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+"	Plug 'https://github.com/akinsho/toggleterm.nvim.git'
 
 call plug#end()
 
-lua require("toggleterm").setup()
+"lua require("toggleterm").setup()
 
 noremap <C-t> :NERDTreeToggle<CR>
 noremap <C-f> :NERDTreeFocus<CR>
 
-colorscheme iceberg
+"colorscheme iceberg
 
 " escape in insert and visual mode
 inoremap jj <esc>
@@ -56,6 +56,9 @@ set shiftwidth=4
 
 " Set tab width to 4 columns.
 set tabstop=4
+
+" Replace tabs with spaces
+set expandtab
 
 " Do not save backup files.
 set nobackup
