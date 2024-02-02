@@ -22,7 +22,7 @@ while true; do
     read -p "Do you want to install C/C++ dev tools? (yn): " RESP
     case $RESP in 
         [Yy]* ) 
-            sudo apt install -y build-essential cmake
+            sudo apt install -y build-essential cmake clang
             break;;
         [Nn]* )
             break;;
