@@ -26,6 +26,12 @@ vnoremap ;; <esc>
 " Coc Tab to confirm completion
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-Y>" : "\<Tab>"
 
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 

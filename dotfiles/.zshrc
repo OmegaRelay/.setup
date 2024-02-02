@@ -47,7 +47,7 @@ PROMPT='
 
 # Add devinfo to start of each terminal
 # checks neofetch exists and then runs neofetch
-[[ -z $(which neofetch) ]] && neofetch --color_blocks off
+[[ -f $(which neofetch) ]] && neofetch --color_blocks off
 
 
 ### Environment Variables ###

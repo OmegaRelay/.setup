@@ -2,17 +2,22 @@
 
 #get the cloned directory path
 DIR=$(git rev-parse --show-toplevel)
+DOTFILE_DIR="$DIR/dotfiles"
+CONFIG_DIR="$DIR/config"
 
 ORIG_FILES=(
-	"$DIR"/.zshrc
-	"$DIR"/.gitconfig
-	"$DIR"/.vimrc
+	"$DOTIFLE_DIR".zshrc
+	"$DOTFILE_DIR"/.gitconfig
+	"$DOTFILE_DIR"/.vimrc
+	"$CONFIG_DIR"/init.vim
+
 )
 
 END_FILES=(
 	"$HOME"/.zshrc	
 	"$HOME"/.gitconfig
 	"$HOME"/.vimrc
+	"$HOME"/.config/nvim/init.vim
 )
 
 INDEX=0

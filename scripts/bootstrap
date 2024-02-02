@@ -1,0 +1,49 @@
+#!/bin/bash
+
+echo "apt update"
+sudo apt update
+
+## Install all the used tools
+sudo add-apt-repository ppa:aslatter/ppa -y # Repo for alacritty
+sudo apt install -y git vim neovim nala curl wget nmcli nmtui alacritty
+sudo snap install code
+
+## Install neovim plugin tool: vim-plug
+echo 
+echo "installing neovim plugin tool"
+echo "don't forget to use the :PlugInstall command in neovim to install the configured plugins"
+echo
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+echo
+
+## Install C/C++ dev tools
+while true; do
+    read -p "Do you want to install C/C++ dev tools? (yn): " RESP
+    case $RESP in 
+        [Yy]* ) 
+            sudo apt install -y build-essential cmake
+            break;;
+        [Nn]* )
+            break;;
+        * )
+            echo "yes or no"
+    esac
+done
+
+## Install Flutter dev tools
+while true; do
+    read -p "Do you want to install FLutter dev tools? (yn): " RESP
+    case $RESP in 
+        [Yy]* ) 
+            sudo snap install flutter --classic && flutter doctor
+            break;;
+        [Nn]* )
+            break;;
+        * )
+            echo "yes or no"
+    esac
+done
+
+DIR=$(git rev-parse --show-toplevel)
+"$DIR"/scripts/create-sym-links.sh
