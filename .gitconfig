@@ -1,5 +1,7 @@
 [init] 
 	defaultBranch=master
+[core]
+	editor = nvim
 [alias]
 	st = status
 	br = branch
