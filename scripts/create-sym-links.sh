@@ -10,13 +10,15 @@ ORIG_FILES=(
 	"$DOTFILE_DIR/.gitconfig"
 	"$DOTFILE_DIR/.vimrc"
 	"$CONFIG_DIR/init.vim"
+	"$CONFIG_DIR/vscode-settings.json"
 )
 
 END_FILES=(
-	"$HOME"/.zshrc	
-	"$HOME"/.gitconfig
-	"$HOME"/.vimrc
-	"$HOME"/.config/nvim/init.vim
+	"$HOME/.zshrc"
+	"$HOME/.gitconfig"
+	"$HOME/.vimrc"
+	"$HOME/.config/nvim/init.vim"
+	"$HOME/.config/Code/User/settings.json"
 )
 
 INDEX=0
