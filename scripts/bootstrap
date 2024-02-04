@@ -5,7 +5,8 @@ sudo apt update
 
 ## Install all the used tools
 sudo add-apt-repository ppa:aslatter/ppa -y # Repo for alacritty
-sudo apt install -y git vim neovim nala curl wget nmcli nmtui alacritty
+sudo apt install -y git vim neovim nala curl wget nmcli nmtui alacritty zsh
+
 sudo snap install code
 
 ## Install neovim plugin tool: vim-plug
@@ -45,5 +46,6 @@ while true; do
     esac
 done
 
+sudo chsh -s $(which zsh)
 DIR=$(git rev-parse --show-toplevel)
 "$DIR"/scripts/create-sym-links.sh

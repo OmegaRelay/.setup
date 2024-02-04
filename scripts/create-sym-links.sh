@@ -6,11 +6,10 @@ DOTFILE_DIR="$DIR/dotfiles"
 CONFIG_DIR="$DIR/config"
 
 ORIG_FILES=(
-	"$DOTIFLE_DIR".zshrc
-	"$DOTFILE_DIR"/.gitconfig
-	"$DOTFILE_DIR"/.vimrc
-	"$CONFIG_DIR"/init.vim
-
+	"$DOTFILE_DIR/.zshrc"
+	"$DOTFILE_DIR/.gitconfig"
+	"$DOTFILE_DIR/.vimrc"
+	"$CONFIG_DIR/init.vim"
 )
 
 END_FILES=(
