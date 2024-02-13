@@ -37,6 +37,9 @@ alias ll="ls -lah --color=auto"
 alias copy="xclip -sel clip"
 alias ssh-keygen="ssh-keygen -t ed25519"
 alias nv="nvim"
+alias unzip-tar="tar -xvf"
+alias unzip-gzip="tar -xzvf"
+alias unzip-bzip="tar -xjvf"
 
 
 ### Prompt setup ###
