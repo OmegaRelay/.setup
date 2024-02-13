@@ -11,5 +11,23 @@
             "after": ["<Esc>"]
         }
     ],
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "doxdocgen.file.versionTag": "",
+    "doxdocgen.generic.authorEmail": "theismejnertsen@gmail.com",
+    "doxdocgen.generic.authorName": "Theis M",
+    "doxdocgen.generic.authorTag": "@author {author} <{email}>",
+    "doxdocgen.generic.dateFormat": "DD-MM-YYYY",
+    "doxdocgen.generic.useGitUserEmail": true,
+    "doxdocgen.generic.useGitUserName": true,
+    "doxdocgen.file.copyrightTag": [
+
+    ],
+    "doxdocgen.file.fileOrder": [
+        "file",
+        "author",
+        "date",
+        "empty",
+        "brief",
+        "empty"
+    ]
 }
