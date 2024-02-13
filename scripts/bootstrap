@@ -4,8 +4,23 @@ echo "apt update"
 sudo apt update
 
 ## Install all the used tools
+GENERAL_PACKAGE_LIST=(
+	git 
+	vim
+	neovim
+	nala
+	curl
+	wget
+	network-manager
+	zsh
+	alacritty
+)
 sudo add-apt-repository ppa:aslatter/ppa -y # Repo for alacritty
-sudo apt install -y git vim neovim nala curl wget nmcli nmtui alacritty zsh
+for PACKAGE in ${GENERAL_PACKAGE_LIST[@]}; do
+	echo ================================================================================
+	echo "Installing $PACKAGE"
+	sudo apt install -y "$PACKAGE"	
+done
 
 sudo snap install code
 
@@ -46,6 +61,6 @@ while true; do
     esac
 done
 
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 DIR=$(git rev-parse --show-toplevel)
 "$DIR"/scripts/create-sym-links.sh
