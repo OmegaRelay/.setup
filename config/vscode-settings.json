@@ -29,5 +29,6 @@
         "empty",
         "brief",
         "empty"
-    ]
+    ],
+    "cmake.configureOnOpen": true
 }
