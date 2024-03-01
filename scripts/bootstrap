@@ -47,6 +47,21 @@ while true; do
     esac
 done
 
+## Install Rust dev tools
+while true; do
+    read -p "Do you want to install Rust dev tools? (yn): " RESP
+    case $RESP in 
+        [Yy]* ) 
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+            rustup toolchain install stable
+            break;;
+        [Nn]* )
+            break;;
+        * )
+            echo "yes or no"
+    esac
+done
+
 ## Install Flutter dev tools
 while true; do
     read -p "Do you want to install FLutter dev tools? (yn): " RESP
@@ -61,6 +76,7 @@ while true; do
     esac
 done
 
+echo switching shell to zsh
 chsh -s $(which zsh)
 DIR=$(git rev-parse --show-toplevel)
 "$DIR"/scripts/create-sym-links.sh
