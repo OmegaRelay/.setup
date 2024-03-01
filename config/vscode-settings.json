@@ -36,6 +36,7 @@
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "sameLine",
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
     "cmake.configureOnOpen": true,
+    "cmake.showOptionsMovedNotification": false,
     "todo-tree.general.tags": [
         "@todo",
         "TODO",
