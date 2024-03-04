@@ -46,8 +46,8 @@
     ],
     "todo-tree.highlights.customHighlight": {
         "@todo":{
-            "foreground": "",
             "background":"#FFFFFF"
         }
-    }
+    },
+    "cmake.showOptionsMovedNotification": false
 }
