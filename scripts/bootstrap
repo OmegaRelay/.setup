@@ -38,6 +38,11 @@ install_general_packages() {
         sudo apt install -y "$PACKAGE"	
     done
 
+    # Install lazy git
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit /usr/local/bin
 }
 
 
@@ -47,6 +52,7 @@ install_ide() {
         case $RESP in 
             [Yy]* ) 
                 install_neovim
+                install_tmux
                 break;;
             [Nn]* )
                 break;;
@@ -69,6 +75,18 @@ install_ide() {
     done
 }
 
+install_tmux() {
+    sudo mkdir -p /opt/tmux/
+
+    pushd /opt/tmux
+    sudo wget https://github.com/nelsonenzo/tmux-appimage/releases/latest/download/tmux.appimage
+    sudo chmod +x tmux.appimage
+    sudo ln -s /opt/nvim/nvim.appimage /opt/bin/tmux
+    popd
+
+    git clone git@github.com:tmux-plugins/tpm.git "$HOME"/.tmux/plugins/tpm
+}
+
 install_neovim() {
     sudo mkdir -p /opt/nvim/
 
@@ -78,10 +96,7 @@ install_neovim() {
     sudo ln -s /opt/nvim/nvim.appimage /opt/bin/nvim
     popd
 
-    mkdir "$HOME"/.config/nvim
-    pushd "$HOME"/.config/nvim
-    git clone git@github.com:NvChad/NvChad.git
-    popd
+    git clone git@github.com:NvChad/NvChad.git "$HOME"/.config/nvim
 }
 
 install_dev_packages() {

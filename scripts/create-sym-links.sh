@@ -11,6 +11,7 @@ ORIG_FILES=(
 	"$DOTFILE_DIR/.vimrc"
 	"$CONFIG_DIR/vscode-settings.json"
 	"$CONFIG_DIR/nvchad.custom"
+	"$CONFIG_DIR/tmux.conf"
 )
 
 END_FILES=(
@@ -19,6 +20,7 @@ END_FILES=(
 	"$HOME/.vimrc"
 	"$HOME/.config/Code/User/settings.json"
 	"$HOME/.config/nvim/lua/custom"
+	"$HOME/.config/tmux/tmux.conf"
 )
 
 INDEX=0
