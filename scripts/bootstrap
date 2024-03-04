@@ -8,7 +8,7 @@ main() {
     sudo mkdir -p /opt/bin/
 
     install_general_packages
-
+    install_ide
     install_dev_packages
 
     echo switching shell to zsh
@@ -38,14 +38,22 @@ install_general_packages() {
         sudo apt install -y "$PACKAGE"	
     done
 
-    # install IDE
-    sudo mkdir -p /opt/nvim/
-    pushd /opt/nvim 
-    sudo wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    sudo chmod +x nvim.appimage
-    sudo ln -s /opt/nvim/nvim.appimage /opt/bin/nvim
-    popd
-    
+}
+
+
+install_ide() {
+    while true; do
+        read -p "install neovim? (yn): " RESP
+        case $RESP in 
+            [Yy]* ) 
+                install_neovim
+                break;;
+            [Nn]* )
+                break;;
+            * )
+                echo "yes or no"
+        esac
+    done
 
     while true; do
         read -p "install vs-code? (yn): " RESP
@@ -59,6 +67,21 @@ install_general_packages() {
                 echo "yes or no"
         esac
     done
+}
+
+install_neovim() {
+    sudo mkdir -p /opt/nvim/
+
+    pushd /opt/nvim 
+    sudo wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    sudo chmod +x nvim.appimage
+    sudo ln -s /opt/nvim/nvim.appimage /opt/bin/nvim
+    popd
+
+    mkdir "$HOME"/.config/nvim
+    pushd "$HOME"/.config/nvim
+    git clone git@github.com:NvChad/NvChad.git
+    popd
 }
 
 install_dev_packages() {

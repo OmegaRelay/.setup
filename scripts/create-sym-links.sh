@@ -9,16 +9,16 @@ ORIG_FILES=(
 	"$DOTFILE_DIR/.zshrc"
 	"$DOTFILE_DIR/.gitconfig"
 	"$DOTFILE_DIR/.vimrc"
-	"$CONFIG_DIR/init.vim"
 	"$CONFIG_DIR/vscode-settings.json"
+	"$CONFIG_DIR/nvchad.custom"
 )
 
 END_FILES=(
 	"$HOME/.zshrc"
 	"$HOME/.gitconfig"
 	"$HOME/.vimrc"
-	"$HOME/.config/nvim/init.vim"
 	"$HOME/.config/Code/User/settings.json"
+	"$HOME/.config/nvim/lua/custom"
 )
 
 INDEX=0
@@ -26,9 +26,13 @@ INDEX=0
 printf "Creating symbolic links, from %s...\n" "$DIR"
 for FILE in ${END_FILES[@]}; do
 	printf "%s\n" "$FILE"
-	# if [[ -f "$FILE" ]] || [[ -L "$FILE" ]]; then
-	# 	rm "$FILE"
-	# fi
+    
+    # Remove directories for symlinks
+	if [[ -d ${ORIG_FILES[INDEX]} ]]; then
+		if [[ -d "$FILE" ]]; then
+			rm -rf "$FILE"
+		fi
+	fi
 
 	ln -sf ${ORIG_FILES[INDEX]}	"$FILE"
 	((INDEX++))
