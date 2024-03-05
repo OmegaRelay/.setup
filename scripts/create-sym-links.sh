@@ -12,6 +12,7 @@ ORIG_FILES=(
 	"$CONFIG_DIR/vscode-settings.json"
 	"$CONFIG_DIR/nvchad.custom"
 	"$CONFIG_DIR/tmux.conf"
+	"$CONFIG_DIR/alacritty.toml"
 )
 
 END_FILES=(
@@ -21,6 +22,7 @@ END_FILES=(
 	"$HOME/.config/Code/User/settings.json"
 	"$HOME/.config/nvim/lua/custom"
 	"$HOME/.config/tmux/tmux.conf"
+	"$HOME/.config/alacritty/alacritty.toml"
 )
 
 INDEX=0

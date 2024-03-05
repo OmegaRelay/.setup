@@ -1,0 +1,9 @@
+[cursor.style]
+shape = "Beam"
+
+[window]
+opacity = 0.92
+
+[font.normal]
+family = "DejaVuSansM Nerd Font Mono" 
+style = "Regular"
