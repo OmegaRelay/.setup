@@ -1,8 +1,12 @@
-[cursor.style]
-shape = "Beam"
-
 [window]
 opacity = 0.92
+dynamic_padding = true
+decorations = "None"
+blur = true
+startup_mode = "Fullscreen"
+
+[cursor.style]
+shape = "Beam"
 
 [font.normal]
 family = "DejaVuSansM Nerd Font Mono" 
