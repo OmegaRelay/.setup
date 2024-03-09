@@ -47,6 +47,10 @@ install_general_packages() {
     sudo install lazygit /usr/local/bin
 }
 
+    # cleanup
+    rm -rf lazygit*
+} 
+
 
 install_ide() {
     while true; do
