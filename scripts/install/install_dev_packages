@@ -45,4 +45,4 @@ install_dev_packages() {
     done
 }
 
-install_dev_packages()
+install_dev_packages

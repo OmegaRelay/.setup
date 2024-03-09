@@ -16,4 +16,4 @@ install_fonts() {
     fc-cache -f -v
 }
 
-install_fonts() {
+install_fonts
