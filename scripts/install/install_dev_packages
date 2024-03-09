@@ -6,7 +6,7 @@ install_dev_packages() {
         read -p "Do you want to install C/C++ dev tools? (yn): " RESP
         case $RESP in 
             [Yy]* ) 
-                sudo nala install -y build-essential cmake clang
+                sudo apt install -y build-essential cmake clang
                 break;;
             [Nn]* )
                 break;;
@@ -32,10 +32,10 @@ install_dev_packages() {
 
     ## Install Flutter dev tools
     while true; do
-        read -p "Do you want to install FLutter dev tools? (yn): " RESP
+        read -p "Do you want to install Flutter dev tools? (yn): " RESP
         case $RESP in 
             [Yy]* ) 
-                sudo snap install flutter --classic && flutter doctor
+                install_flutter
                 break;;
             [Nn]* )
                 break;;
@@ -43,6 +43,20 @@ install_dev_packages() {
                 echo "yes or no"
         esac
     done
+}
+
+install_flutter() {
+    mkdir -p tmp 
+    pushd tmp
+
+    # TODO change this to automatically get the latest version
+    wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.3-stable.tar.xz
+    sudo tar -xvf flutter_linux_*-stable.tar.xz -C /opt
+    sudo ln -s /opt/flutter/bin/* /opt/bin/
+    /opt/bin/flutter doctor
+
+    popd
+    rm -rf tmp
 }
 
 install_dev_packages
