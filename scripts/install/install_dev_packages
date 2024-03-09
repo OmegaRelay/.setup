@@ -49,10 +49,15 @@ install_flutter() {
     mkdir -p tmp 
     pushd tmp
 
+    # Needed for linux development
+    sudo apt install libgtk-3-dev
+    
     # TODO change this to automatically get the latest version
     wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.3-stable.tar.xz
     sudo tar -xvf flutter_linux_*-stable.tar.xz -C /opt
     sudo ln -s /opt/flutter/bin/* /opt/bin/
+
+    # TODO add prompts to install flutter's platform specific dependancies
     /opt/bin/flutter doctor
 
     popd
