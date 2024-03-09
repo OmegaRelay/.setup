@@ -36,6 +36,8 @@ for FILE in ${END_FILES[@]}; do
 		if [[ -d "$FILE" ]]; then
 			rm -rf "$FILE"
 		fi
+    else 
+        mkdir -p $(dirname "$FILE")
 	fi
 
 	ln -sf ${ORIG_FILES[INDEX]}	"$FILE"
