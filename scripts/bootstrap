@@ -31,6 +31,7 @@ install_general_packages() {
         network-manager
         zsh
         alacritty
+        libfuse2 # For .appimages
     )
 
     sudo add-apt-repository ppa:aslatter/ppa -y # Repo for alacritty
@@ -45,7 +46,6 @@ install_general_packages() {
     curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
     tar xf lazygit.tar.gz lazygit
     sudo install lazygit /usr/local/bin
-}
 
     # cleanup
     rm -rf lazygit*
@@ -87,7 +87,7 @@ install_tmux() {
     pushd /opt/tmux
     sudo wget https://github.com/nelsonenzo/tmux-appimage/releases/latest/download/tmux.appimage
     sudo chmod +x tmux.appimage
-    sudo ln -s /opt/nvim/nvim.appimage /opt/bin/tmux
+    sudo ln -s /opt/tmux/tmux.appimage /opt/bin/tmux
     popd
 
     git clone git@github.com:tmux-plugins/tpm.git "$HOME"/.tmux/plugins/tpm
