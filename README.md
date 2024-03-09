@@ -1,34 +1,23 @@
-# My Dotfiles/config files
+# Dotfiles/config files
+This repo contains the configuration files, dotfiles and scripts to easily port
+my setup to a new machine
 
 ## Steps to bootstrap
+Currently only Linux (More specifically Ubuntu) operating systems are supported 
+with this method of bootstrapping (steps are being taken to make it more 
+portable).
 
-1. (*if on MacOs*) Install Apple's Command Line Tools, which are prerequisites for Git and Homebrew.
+### Linux
+- Clone the repo
+- Run `./scripts/bootstap` to start bootstrapping
+- At various steps, prompts will be given to ask whether you want to install 
+some items
+- Configurations and dotfiles are automatically symbolically linked to the 
+location where this repo is (when the bootstrap script is run. This means that:
+    - Getting updated configs and scripts is as easy as `git pull`
+    - If this repo is moved then the `scripts/create-sym-links.sh` must be run to 
+    update the links
 
-```zsh
-xcode-select --install
-```
+To see what exactly is being installed please refer to the install scripts in 
+the scripts/install directory
 
-2. Clone repo into new hidden directory.
-
-```zsh
-# Use SSH
-git clone git@github.com:OmegaRelay/.dotfiles.git
-```
-
-
-3. move to the git repo directory and run the ```scripts/create-sym-links.sh``` file
-
-```zsh
-cd .dotfiles
-./scripts/create-sym-links.sh
-```
-
-4. Create a local .gitconfig file named ```.gitconfig-local``` to set any local machine configurations such as users for specific folders, etc...
-
-## Working Pracitces
-- This repo contains a git config file which is meant to be used as a global setting for git aliases and defaults, all machine local git configurations, inlcuding user info must go into a .gitconfig-local file which is referenced in the .gitconfig.
-- This repo contains a .zshrc file with a few path additions, any more local ones and other local environment variables must be contained within the machines .zshenv file.
-## TODO List
-
-- Make a checklist of steps to decommission your computer before wiping your hard drive.
-- Find inspiration and examples in other Dotfiles repositories at [dotfiles.github.io](https://dotfiles.github.io/).
