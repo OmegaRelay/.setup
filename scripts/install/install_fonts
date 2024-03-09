@@ -1,0 +1,19 @@
+#!/bin/bash
+
+install_fonts() {
+    local FONT_DIR="$HOME"/.local/share/fonts
+    mkdir -p "$FONT_DIR"
+
+    pushd "$FONT_DIR"
+
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/DejaVuSansMono.zip
+    unzip DejaVuSansMono.zip -d DejaVuSansMono
+    rm DejaVuSansMono.zip
+
+    popd
+
+    # Reload font cache
+    fc-cache -f -v
+}
+
+install_fonts() {

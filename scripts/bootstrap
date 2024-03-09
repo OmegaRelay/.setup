@@ -1,171 +1,42 @@
 #!/bin/bash
 
+SCRIPT_PATH=$(dirname "$0")
+
 main() {
-    echo "apt update"
+    echo 
+    echo ===== UPDATING SYSTEM ================================================
     sudo apt update
 
-    # Directory (on path) for self installed binaries
+    echo 
+    echo ===== CREATING REQUIRED DIRECTORIES ==================================
+    echo "/opt/bin"
     sudo mkdir -p /opt/bin/
 
-    install_general_packages
-    install_ide
-    install_dev_packages
+    . $SCRIPT_PATH/../dotfiles/.zshenv
+    echo "$XDG_CONFIG_HOME"
+    mkdir -p "$XDG_CONFIG_HOME"
 
-    install_fonts
+    echo 
+    echo ===== INSTALLING GENERAL PACKAGES ====================================
+    "$SCRIPT_PATH"/install/install_general_packages
 
-    echo switching shell to zsh
+    echo 
+    echo ===== INSTALLING IDE =================================================
+    "$SCRIPT_PATH"/install/install_ide
+
+    echo 
+    echo ===== INSTALLING DEV DEPENDANCIES ====================================
+    "$SCRIPT_PATH"/install/install_dev_packages
+    "$SCRIPT_PATH"/install/install_fonts
+
+    echo 
+    echo ===== SWITCHING TO ZSH ===============================================
     chsh -s $(which zsh)
 
+    echo 
+    echo ===== CREATING SYMBOLIC LINKS ========================================
     DIR=$(git rev-parse --show-toplevel)
-    "$DIR"/scripts/create-sym-links.sh
-}
-
-install_general_packages() {
-    ## Standard utility packages for every machine
-    local GENERAL_PACKAGE_LIST=(
-        git 
-        vim
-        nala
-        curl
-        wget
-        network-manager
-        zsh
-        alacritty
-        libfuse2 # For .appimages
-        pandoc
-    )
-
-    sudo add-apt-repository ppa:aslatter/ppa -y # Repo for alacritty
-    for PACKAGE in ${GENERAL_PACKAGE_LIST[@]}; do
-        echo ================================================================================
-        echo "Installing $PACKAGE"
-        sudo apt install -y "$PACKAGE"	
-    done
-
-    # Install lazy git
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    tar xf lazygit.tar.gz lazygit
-    sudo install lazygit /usr/local/bin
-
-    # cleanup
-    rm -rf lazygit*
-} 
-
-
-install_ide() {
-    while true; do
-        read -p "install neovim? (yn): " RESP
-        case $RESP in 
-            [Yy]* ) 
-                install_neovim
-                install_tmux
-                break;;
-            [Nn]* )
-                break;;
-            * )
-                echo "yes or no"
-        esac
-    done
-
-    while true; do
-        read -p "install vs-code? (yn): " RESP
-        case $RESP in 
-            [Yy]* ) 
-                sudo snap install code
-                break;;
-            [Nn]* )
-                break;;
-            * )
-                echo "yes or no"
-        esac
-    done
-}
-
-install_tmux() {
-    sudo mkdir -p /opt/tmux/
-
-    pushd /opt/tmux
-    sudo wget https://github.com/nelsonenzo/tmux-appimage/releases/latest/download/tmux.appimage
-    sudo chmod +x tmux.appimage
-    sudo ln -s /opt/tmux/tmux.appimage /opt/bin/tmux
-    popd
-
-    git clone git@github.com:tmux-plugins/tpm.git "$HOME"/.tmux/plugins/tpm
-    "$HOME"/.tmux/plugins/tpm/tpm
-}
-
-install_neovim() {
-    sudo mkdir -p /opt/nvim/
-
-    pushd /opt/nvim 
-    sudo wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    sudo chmod +x nvim.appimage
-    sudo ln -s /opt/nvim/nvim.appimage /opt/bin/nvim
-    popd
-
-    git clone git@github.com:NvChad/NvChad.git "$HOME"/.config/nvim
-}
-
-install_dev_packages() {
-    ## Install C/C++ dev tools
-    while true; do
-        read -p "Do you want to install C/C++ dev tools? (yn): " RESP
-        case $RESP in 
-            [Yy]* ) 
-                sudo nala install -y build-essential cmake clang
-                break;;
-            [Nn]* )
-                break;;
-            * )
-                echo "yes or no"
-        esac
-    done
-
-    ## Install Rust dev tools
-    while true; do
-        read -p "Do you want to install Rust dev tools? (yn): " RESP
-        case $RESP in 
-            [Yy]* ) 
-                curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-                rustup toolchain install stable
-                break;;
-            [Nn]* )
-                break;;
-            * )
-                echo "yes or no"
-        esac
-    done
-
-    ## Install Flutter dev tools
-    while true; do
-        read -p "Do you want to install FLutter dev tools? (yn): " RESP
-        case $RESP in 
-            [Yy]* ) 
-                sudo snap install flutter --classic && flutter doctor
-                break;;
-            [Nn]* )
-                break;;
-            * )
-                echo "yes or no"
-        esac
-    done
-}
-
-install_fonts() {
-    local FONT_DIR="$HOME"/.local/share/fonts
-    mkdir -p "$FONT_DIR"
-
-    pushd "$FONT_DIR"
-
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/DejaVuSansMono.zip
-    unzip DejaVuSansMono.zip -d DejaVuSansMono
-    rm DejaVuSansMono.zip
-
-    popd
-
-    # Reload font cache
-    fc-cache -f -v
+    "$SCRIPT_PATH"/create-sym-links.sh
 }
 
 main

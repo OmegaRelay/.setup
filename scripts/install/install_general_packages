@@ -1,0 +1,35 @@
+#!/bin/bash
+
+install_general_packages() {
+    ## Standard utility packages for every machine
+    local GENERAL_PACKAGE_LIST=(
+        git 
+        vim
+        nala
+        curl
+        wget
+        network-manager
+        zsh
+        alacritty
+        libfuse2 # For .appimages
+        pandoc
+    )
+
+    sudo add-apt-repository ppa:aslatter/ppa -y # Repo for alacritty
+    for PACKAGE in ${GENERAL_PACKAGE_LIST[@]}; do
+        echo ================================================================================
+        echo "Installing $PACKAGE"
+        sudo apt install -y "$PACKAGE"	
+    done
+
+    # Install lazy git
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit /usr/local/bin
+
+    # cleanup
+    rm -rf lazygit*
+} 
+
+install_general_packages

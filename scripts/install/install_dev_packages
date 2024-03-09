@@ -1,0 +1,48 @@
+#!/bin/bash
+
+install_dev_packages() {
+    ## Install C/C++ dev tools
+    while true; do
+        read -p "Do you want to install C/C++ dev tools? (yn): " RESP
+        case $RESP in 
+            [Yy]* ) 
+                sudo nala install -y build-essential cmake clang
+                break;;
+            [Nn]* )
+                break;;
+            * )
+                echo "yes or no"
+        esac
+    done
+
+    ## Install Rust dev tools
+    while true; do
+        read -p "Do you want to install Rust dev tools? (yn): " RESP
+        case $RESP in 
+            [Yy]* ) 
+                curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+                rustup toolchain install stable
+                break;;
+            [Nn]* )
+                break;;
+            * )
+                echo "yes or no"
+        esac
+    done
+
+    ## Install Flutter dev tools
+    while true; do
+        read -p "Do you want to install FLutter dev tools? (yn): " RESP
+        case $RESP in 
+            [Yy]* ) 
+                sudo snap install flutter --classic && flutter doctor
+                break;;
+            [Nn]* )
+                break;;
+            * )
+                echo "yes or no"
+        esac
+    done
+}
+
+install_dev_packages()
