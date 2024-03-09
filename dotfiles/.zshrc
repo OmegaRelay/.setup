@@ -39,6 +39,11 @@ alias lgit="lazygit"
 alias unzip-tar="tar -xvf"
 alias unzip-gzip="tar -xzvf"
 alias unzip-bzip="tar -xjvf"
+alias ssh-config="$EDITOR $SSH_DIR/config"
+
+
+### Extra Files to Source ###
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 ### Prompt setup ###
@@ -48,15 +53,3 @@ DIR='%F{cyan}%2d%f'
 PROMPT='
 %F{green}%n%f:'$DIR' ${vcs_info_msg_0_} 
 %F{red}%w %T%f %(!. §.->) '
-
-# Add devinfo to start of each terminal
-# checks neofetch exists and then runs neofetch
-# [[ -f $(which neofetch) ]] && neofetch --color_blocks off
-
-
-### Environment Variables ###
-export SSH_CONFIG=~/.ssh/config
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
