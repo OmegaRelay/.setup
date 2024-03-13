@@ -40,6 +40,7 @@ alias unzip-tar="tar -xvf"
 alias unzip-gzip="tar -xzvf"
 alias unzip-bzip="tar -xjvf"
 alias ssh-config="$EDITOR $SSH_DIR/config"
+alias google="w3m google.com"
 
 
 ### Extra Files to Source ###
