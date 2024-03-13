@@ -21,6 +21,10 @@ main() {
     "$SCRIPT_PATH"/install/install_general_packages
 
     echo 
+    echo ===== INSTALLING DOCKER ==============================================
+    "$SCRIPT_PATH"/install/install_docker
+
+    echo 
     echo ===== INSTALLING IDE =================================================
     "$SCRIPT_PATH"/install/install_ide
 
