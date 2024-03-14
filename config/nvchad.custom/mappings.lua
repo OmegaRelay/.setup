@@ -21,6 +21,9 @@ M.git = {
 }
  
 M.general = {
+    n = {
+        [";"] = { ":", "enter command mode" , opts = { nowait = true }},
+    },
     -- Insert mode mappings
     i = {
         ["jj"] = { "<ESC>", "escape insert mode" , opts = { nowait = true }},
