@@ -11,10 +11,20 @@ local plugins = {
         end
     },
     {
+        "tpope/vim-fugitive",
+        lazy = false
+    },
+    {
         "neovim/nvim-lspconfig",
         config = function ()
             require "plugins.configs.lspconfig"
             require "custom.configs.lspconfig"
+        end
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
         end
     },
     {
