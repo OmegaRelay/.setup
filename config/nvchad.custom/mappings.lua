@@ -13,6 +13,8 @@ M.git = {
   n = {
     ["<leader>gp"] = 
         {"<cmd> Gitsigns preview_hunk<CR>", "git: preview change"},
+    ["<leader>gr"] = 
+        {"<cmd> Gitsigns reset_hunk<CR>", "git: reset hunk"},
     ["<leader>gb"] = 
         {"<cmd> Gitsigns toggle_current_line_blame<CR>", "git: toggle line blame"},
     ["<leader>gd"] = 
