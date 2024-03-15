@@ -11,5 +11,6 @@
 	r = reset
 	rsh = "reset --hard"
 	rst = "restore --staged"
+    undo = "reset HEAD~1"
 [include]
 	path = ~/.gitconfig-local
