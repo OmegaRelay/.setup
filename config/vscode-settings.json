@@ -49,5 +49,8 @@
             "background":"#FFFFFF"
         }
     },
-    "cmake.showOptionsMovedNotification": false
+    "cmake.showOptionsMovedNotification": false,
+    "editor.rulers": [
+        80
+    ]
 }
