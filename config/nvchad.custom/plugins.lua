@@ -41,7 +41,7 @@ local plugins = {
     {
         "nvim-tree/nvim-tree.lua",
         opts = {
-              git = {
+            git = {
                 enable = true,
                 ignore = false
             },
