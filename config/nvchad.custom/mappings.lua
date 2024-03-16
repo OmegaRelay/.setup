@@ -9,19 +9,35 @@ M.tmux = {
     }
 }
 
+M.dap = {
+    plugin = true,
+    n = {
+        ["<leader>db"] =
+            {"<cmd> DapToggleBreakpoint<CR>", "DAP toggle breakpoint"},
+        ["<leader>dr"] =
+            {"<cmd> DapContinue<CR>", "DAP continue"},
+        ["<leader>do"] =
+            {"<cmd> DapStepOver<CR>", "DAP step over"},
+        ["<leader>dj"] =
+            {"<cmd> DapStepInto<CR>", "DAP step into"},
+        ["<leader>dk"] =
+            {"<cmd> DapStepOut<CR>", "DAP step out"},
+    }
+}
+
 M.git = {
   n = {
-    ["<leader>gp"] = 
+    ["<leader>gp"] =
         {"<cmd> Gitsigns preview_hunk<CR>", "git: preview change"},
-    ["<leader>gr"] = 
+    ["<leader>gr"] =
         {"<cmd> Gitsigns reset_hunk<CR>", "git: reset hunk"},
-    ["<leader>gb"] = 
+    ["<leader>gb"] =
         {"<cmd> Gitsigns toggle_current_line_blame<CR>", "git: toggle line blame"},
-    ["<leader>gd"] = 
+    ["<leader>gd"] =
         {"<cmd> Gitsigns diffthis<CR>", "git: open diff"}
   }
 }
- 
+
 M.general = {
     n = {
         [";"] = { ":", "enter command mode" , opts = { nowait = true }},
