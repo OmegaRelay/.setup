@@ -12,5 +12,6 @@
 	rsh = "reset --hard"
 	rst = "restore --staged"
     undo = "reset HEAD~1"
+    tree = "log --oneline --graph --decorate --all"
 [include]
 	path = ~/.gitconfig-local
