@@ -39,6 +39,10 @@ M.git = {
 }
 
 M.general = {
+    t = {
+        ["<C-n>"] = { "<C-\\><C-n>", "escape terminal" , opts = { nowait = true }},
+    },
+
     n = {
         [";"] = { ":", "enter command mode" , opts = { nowait = true }},
     },
