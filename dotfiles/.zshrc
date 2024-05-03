@@ -41,6 +41,9 @@ alias unzip-gzip="tar -xzvf"
 alias unzip-bzip="tar -xjvf"
 alias ssh-config="$EDITOR $SSH_DIR/config"
 alias google="w3m google.com"
+#
+# TMUX as a singleton
+alias tmux="(tmux list-sessions && tmux attach) || echo Starting Server && tmux"
 
 
 ### Extra Files to Source ###
