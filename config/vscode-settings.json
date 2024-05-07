@@ -64,5 +64,8 @@
         "editor.tabCompletion": "onlySnippets",
         "editor.wordBasedSuggestions": "off"
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "git.confirmSync": false,
+    "git.suggestSmartCommit": false,
+    "hediet.vscode-drawio.resizeImages": null
 }
