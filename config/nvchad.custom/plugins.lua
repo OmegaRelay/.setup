@@ -1,13 +1,16 @@
 local plugins = {
-    {'glepnir/template.nvim', cmd = {'Template','TemProject'}, config = function()
-        require('template').setup({
-            -- config in there
-            temp_dir  = "~/.config/nvim/templates";
-            author = "Theis Mejnertsen";
-            email = "theismejnertsen@gmail.com";
-        })
-    end},
-    -- { "otavioschwanck/new-file-template.nvim", opts = {} },
+    {
+        'glepnir/template.nvim',
+        cmd = {'Template','TemProject'},
+        config = function()
+            require('template').setup({
+                -- config in there
+                temp_dir  = "~/.config/nvim/templates";
+                author = "Theis Mejnertsen";
+                email = "theismejnertsen@gmail.com";
+            })
+        end
+    },
     {
         "kdheepak/lazygit.nvim",
     	cmd = {
