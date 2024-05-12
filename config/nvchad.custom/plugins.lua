@@ -9,6 +9,21 @@ local plugins = {
     end},
     -- { "otavioschwanck/new-file-template.nvim", opts = {} },
     {
+        "kdheepak/lazygit.nvim",
+    	cmd = {
+    		"LazyGit",
+    		"LazyGitConfig",
+    		"LazyGitCurrentFile",
+    		"LazyGitFilter",
+    		"LazyGitFilterCurrentFile",
+    	},
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        lazy = false
+    },
+    {
         "christoomey/vim-tmux-navigator",
         lazy = false
     },
