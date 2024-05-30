@@ -67,5 +67,9 @@
     "editor.tabSize": 2,
     "git.confirmSync": false,
     "git.suggestSmartCommit": false,
-    "hediet.vscode-drawio.resizeImages": null
+    "hediet.vscode-drawio.resizeImages": null,
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ]
 }
