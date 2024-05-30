@@ -34,7 +34,9 @@ M.git = {
     ["<leader>gb"] =
         {"<cmd> Gitsigns toggle_current_line_blame<CR>", "git: toggle line blame"},
     ["<leader>gd"] =
-        {"<cmd> Gitsigns diffthis<CR>", "git: open diff"}
+        {"<cmd> Gitsigns diffthis<CR>", "git: open diff"},
+    ["<leader>lg"] =
+        {"<cmd>LazyGit<cr>", "open LazyGit" }
   }
 }
 
