@@ -16,4 +16,6 @@ export ANDROID_SDK_ROOT="$HOME/.local/android/sdk"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platforms"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 
-export EDITOR=nvim
+export PATH="$(python3 -m site --user-base)/bin:$PATH"
+
+export EDITOR=vim
