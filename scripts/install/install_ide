@@ -46,12 +46,24 @@ install_neovim() {
     sudo mkdir -p /opt/nvim/
 
     pushd /opt/nvim 
-    sudo wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    sudo chmod +x nvim.appimage
-    sudo ln -s /opt/nvim/nvim.appimage /opt/bin/nvim
+    case "$OSTYPE" in 
+    "linux"*)
+        sudo wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+        sudo chmod +x nvim.appimage
+        sudo ln -s /opt/nvim/nvim.appimage /opt/bin/nvim
+        ;;
+    "darwin"*)
+        local arch="$(uname -m)"
+        sudo wget "https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-$arch.tar.gz"
+        sudo tar xzf "nvim-macos-$arch.tar.gz"
+        sudo chmod +x "nvim-macos-$arch/bin/nvim"
+        sudo ln -sf "/opt/nvim/nvim-macos-$arch/bin/nvim" /opt/bin/nvim
+        sudo rm -rf "nvim-macos-$arch.tar.gz"
+        ;;
+    esac
     popd
 
-    git clone git@github.com:NvChad/NvChad.git "$HOME"/.config/nvim
+    git clone https://github.com/NvChad/starter ~/.config/nvim --depth 1
 }
 
 install_code() {
