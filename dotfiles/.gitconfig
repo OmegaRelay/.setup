@@ -1,17 +1,20 @@
 [init] 
-	defaultBranch=master
+    defaultBranch=main
 [core]
-	editor = nvim
+    editor = vim
+    excludesfile = /Users/theis/.gitignore_global
 [alias]
-	st = status
-	br = branch
-	co = checkout
-	cm = commit
-	cmm = "commit -m"
-	r = reset
-	rsh = "reset --hard"
-	rst = "restore --staged"
-    	undo = "reset HEAD~1"
-    	tree = "log --oneline --graph --decorate --all"
+    st = status
+    br = branch
+    co = checkout
+    cm = commit
+    cmm = "commit -m"
+    r = reset
+    rsh = "reset --hard"
+    rst = "restore --staged"
+    undo = "reset HEAD~1"
+    tree = "log --oneline --graph --decorate --all"
 [include]
-	path = ~/.gitconfig-local
+    path = ~/.gitconfig-local
+[commit]
+    template = /Users/theis/.stCommitMsg
