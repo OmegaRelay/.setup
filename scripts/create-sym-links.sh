@@ -6,6 +6,11 @@ main() {
     local DOTFILE_DIR=$(strip_path "$DIR/dotfiles")
     local CONFIG_DIR=$(strip_path "$DIR/config")
 
+    local vscode_user_dir="$HOME/.config/Code/User"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        local vscode_user_dir="$HOME/Library/Application Support/Code/User"
+    fi
+
     local ORIG_FILES=(
         "$DOTFILE_DIR/.zshenv"
         "$DOTFILE_DIR/.zshrc"
@@ -22,7 +27,7 @@ main() {
         "$HOME/.zshrc"
         "$HOME/.gitconfig"
         "$HOME/.vimrc"
-        "$HOME/.config/Code/User/settings.json"
+        "$vscode_user_dir/settings.json"
         "$HOME/.config/nvim/lua/custom"
         "$HOME/.config/tmux/tmux.conf"
         "$HOME/.config/alacritty/alacritty.toml"
@@ -31,8 +36,9 @@ main() {
     local INDEX=0
 
     printf "Creating symbolic links, from %s...\n" "$DIR"
-    for FILE in ${END_FILES[@]}; do
-        printf "%s\n" "$FILE"
+    for FILE in "${END_FILES[@]}"; do
+        local orig_file="${ORIG_FILES[INDEX]}"
+        printf "'%s' => '%s'\n" "$orig_file" "$FILE"
         
         # Remove directories for symlinks
         if [[ -d ${ORIG_FILES[INDEX]} ]]; then
@@ -40,10 +46,10 @@ main() {
                 rm -rf "$FILE"
             fi
         else 
-            mkdir -p $(dirname "$FILE")
+            mkdir -p "$(dirname "$FILE")"
         fi
 
-        ln -sf ${ORIG_FILES[INDEX]}	"$FILE"
+        ln -sf "$orig_file" "$FILE"
         ((INDEX++))
     done
     printf "...Done\n"
