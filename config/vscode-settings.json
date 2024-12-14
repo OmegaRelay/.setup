@@ -7,10 +7,48 @@
     "workbench.iconTheme": "material-icon-theme",
     "vim.insertModeKeyBindings": [
         {
-            "before": ["j", "j"],
-            "after": ["<Esc>"]
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
         }
     ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<backspace>"
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<S-backspace>"
+            ],
+            "commands": [
+                "workbench.action.navigateForward"
+            ],
+            "silent": true
+        }
+    ],
+    "vim.enableNeovim": true,
+    "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
     "explorer.confirmDragAndDrop": false,
     "doxdocgen.file.versionTag": "",
     "doxdocgen.generic.authorEmail": "theismejnertsen@gmail.com",
@@ -19,9 +57,7 @@
     "doxdocgen.generic.dateFormat": "DD-MM-YYYY",
     "doxdocgen.generic.useGitUserEmail": true,
     "doxdocgen.generic.useGitUserName": true,
-    "doxdocgen.file.copyrightTag": [
-
-    ],
+    "doxdocgen.file.copyrightTag": [],
     "doxdocgen.file.fileOrder": [
         "file",
         "author",
@@ -45,13 +81,14 @@
         "ToDo"
     ],
     "todo-tree.highlights.customHighlight": {
-        "@todo":{
-            "background":"#FFFFFF"
+        "@todo": {
+            "background": "#FFFFFF"
         }
     },
-    "cmake.showOptionsMovedNotification": false,
     "editor.rulers": [
-        80
+        80,
+        100,
+        120
     ],
     "[dart]": {
         "editor.formatOnSave": true,
@@ -64,12 +101,55 @@
         "editor.tabCompletion": "onlySnippets",
         "editor.wordBasedSuggestions": "off"
     },
-    "editor.tabSize": 2,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
     "git.confirmSync": false,
     "git.suggestSmartCommit": false,
     "hediet.vscode-drawio.resizeImages": null,
     "cmake.pinnedCommands": [
         "workbench.action.tasks.configureTaskRunner",
         "workbench.action.tasks.runTask"
-    ]
+    ],
+    "python.createEnvironment.trigger": "off",
+    "yaml.schemas": {
+        "file:///Users/theis/.vscode/extensions/atlassian.atlascode-3.0.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "redhat.telemetry.enabled": false,
+    "workbench.startupEditor": "none",
+    "nrf-connect.enableTelemetry": false,
+    "git.autofetch": true,
+    "workbench.sideBar.location": "right",
+    "cmake.showConfigureWithDebuggerNotification": false,
+    "parallels-desktop.extension.path": "/Users/theis/.parallels-desktop-vscode",
+    "parallels-desktop.brew.path": "/opt/bin/brew",
+    "parallels-desktop.prlctl.path": "/usr/local/bin/prlctl",
+    "parallels-desktop.git.path": "/usr/bin/git",
+    "workbench.editorAssociations": {
+        "*.bin": "hexEditor.hexedit",
+        "*.hex": "hexEditor.hexedit"
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "window.newWindowDimensions": "maximized",
+    "dart.flutterSdkPath": "/Users/theis/.local/flutter/flutter",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "python.terminal.activateEnvironment": false,
+    "workbench.settings.applyToAllProfiles": [
+        "python.terminal.activateEnvironment"
+    ],
+    "C_Cpp.default.enableConfigurationSquiggles": false,
+    "c-cpp-flylint.language": "c",
+    "c-cpp-flylint.run": "onType",
+    "cmake.revealLog": "error",
+    "task.autoDetect": "off",
+    "atlascode.jira.enabled": true,
+    "nrf-connect.kconfig.interface": "menuconfig",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "editor.minimap.enabled": true,
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/.git": false
+    }
 }
