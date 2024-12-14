@@ -45,6 +45,12 @@ alias google="w3m google.com"
 # TMUX as a singleton
 alias tmux="(tmux list-sessions && tmux attach) || echo Starting Server && tmux"
 
+# MacOS Specific
+if [[ "$OSTYPE" == "darwin"* ]]; then 
+    alias lsusb="system_profiler SPUSBDataType"
+    alias x64="env /usr/bin/arch -x86_64 /bin/zsh --login"
+fi
+
 
 ### Extra Files to Source ###
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
