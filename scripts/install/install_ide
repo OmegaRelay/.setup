@@ -67,5 +67,3 @@ install_code() {
       code --install-extension $i
     done
 }
-
-install_ide

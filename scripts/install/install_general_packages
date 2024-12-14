@@ -37,5 +37,3 @@ install_lazygit() {
     # cleanup
     rm -rf lazygit*
 }
-
-install_general_packages

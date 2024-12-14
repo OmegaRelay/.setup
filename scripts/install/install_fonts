@@ -15,5 +15,3 @@ install_fonts() {
     # Reload font cache
     fc-cache -f -v
 }
-
-install_fonts

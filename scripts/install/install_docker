@@ -40,5 +40,3 @@ install_docker() {
     # Apply the changes
     newgrp docker
 }
-
-install_docker

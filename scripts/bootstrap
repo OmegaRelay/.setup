@@ -2,6 +2,12 @@
 
 SCRIPT_PATH=$(dirname "$0")
 
+source "$SCRIPT_PATH/install/install_dev_packages"
+source "$SCRIPT_PATH/install/install_docker"
+source "$SCRIPT_PATH/install/install_fonts"
+source "$SCRIPT_PATH/install/install_general_packages"
+source "$SCRIPT_PATH/install/install_ide"
+
 main() {
     echo 
     echo ===== UPDATING SYSTEM ================================================
@@ -18,20 +24,20 @@ main() {
 
     echo 
     echo ===== INSTALLING GENERAL PACKAGES ====================================
-    "$SCRIPT_PATH"/install/install_general_packages
+    install_general_packages
 
     echo 
     echo ===== INSTALLING DOCKER ==============================================
-    "$SCRIPT_PATH"/install/install_docker
+    install_docker
 
     echo 
     echo ===== INSTALLING IDE =================================================
-    "$SCRIPT_PATH"/install/install_ide
+    install_ide
 
     echo 
     echo ===== INSTALLING DEV DEPENDANCIES ====================================
-    "$SCRIPT_PATH"/install/install_dev_packages
-    "$SCRIPT_PATH"/install/install_fonts
+    install_dev_packages
+    install_fonts
 
     echo 
     echo ===== SWITCHING TO ZSH ===============================================

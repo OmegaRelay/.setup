@@ -63,5 +63,3 @@ install_flutter() {
     popd
     rm -rf tmp
 }
-
-install_dev_packages
