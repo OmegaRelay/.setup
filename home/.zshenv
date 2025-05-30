@@ -12,6 +12,9 @@ export CARGO_DIR="$HOME/.cargo"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+export GO_DIR="$HOME/go"
+export PATH="$PATH:$GO_DIR/bin"
+
 export ANDROID_SDK_ROOT="$HOME/.local/android/sdk"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platforms"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
