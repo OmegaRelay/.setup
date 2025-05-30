@@ -113,7 +113,7 @@
     ],
     "python.createEnvironment.trigger": "off",
     "yaml.schemas": {
-        "file:///Users/theis/.vscode/extensions/atlassian.atlascode-3.0.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///Users/theis/.vscode/extensions/atlassian.atlascode-3.8.2/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
