@@ -11,22 +11,38 @@ strip_path() {
 
 main() {
     # get the absolute path to the setup dir
-    local DOTFILE_DIR=$(strip_path "$SCRIPT_DIR/../dotfiles")
+    local HOME_DIR=$(strip_path "$SCRIPT_DIR/../home")
     local CONFIG_DIR=$(strip_path "$SCRIPT_DIR/../config")
 
     printf "\nCreating symbolic links, from %s...\n" "$DOTFILE_DIR"
-    for dotfile in "$DOTFILE_DIR"/*; do
-        local target_path="$HOME"/"$(basename "$dotfile")"
-        printf "%s => %s\n" "$target_path" "$dotfile"
-        ln -sf "$target_path" "$dotfile"
+    for entry in "$HOME_DIR"/* "$HOME_DIR"/.[^.]*; do
+        local target_path="$HOME"/"$(basename "$entry")"
+
+        # Remove directories before symlinking or will create recursive links
+        if [ -d "$entry" ] && [ -d "$target_path" ]; then
+            rm -rf "$target_path"
+        fi
+
+        if [ -d "$entry" ] || [ -f "$entry" ]; then
+            printf "%s => %s\n" "$target_path" "$entry"
+            ln -sf "$entry" "$target_path"
+        fi
     done
 
     printf "\nCreating symbolic links, from %s...\n" "$CONFIG_DIR"
     if [ -d "$XDG_CONFIG_HOME" ]; then
         for entry in "$CONFIG_DIR"/*; do
             local target_path="$XDG_CONFIG_HOME"/"$(basename "$entry")"
-            printf "%s => %s\n" "$target_path" "$entry"
-            ln -sf "$target_path" "$entry"
+
+            # Remove directories before symlinking or will create recursive links
+            if [ -d "$entry" ] && [ -d "$target_path" ]; then
+                    rm -rf "$target_path"
+            fi
+
+            if [ -d "$entry" ] || [ -f "$entry" ]; then
+                printf "%s => %s\n" "$target_path" "$entry"
+                ln -sf "$entry" "$target_path"
+            fi
         done
     else 
         printf "WARNING: 'XDG_CONFIG_HOME' not specified'"
