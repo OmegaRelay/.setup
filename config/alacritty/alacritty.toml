@@ -9,5 +9,5 @@ startup_mode = "Maximized"
 shape = "Beam"
 
 [font.normal]
-family = "DejaVuSansM Nerd Font Mono" 
-style = "Regular"
+family = "JetBrainsMono Nerd Font Mono" 
+style = "Bold"

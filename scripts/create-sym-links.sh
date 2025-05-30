@@ -1,59 +1,6 @@
 #!/bin/bash
 
-main() {
-    # get the absolute path to the setup dir
-    local DIR="$PWD"/$(dirname "$0")/../.
-    local DOTFILE_DIR=$(strip_path "$DIR/dotfiles")
-    local CONFIG_DIR=$(strip_path "$DIR/config")
-
-    local vscode_user_dir="$HOME/.config/Code/User"
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        local vscode_user_dir="$HOME/Library/Application Support/Code/User"
-    fi
-
-    local ORIG_FILES=(
-        "$DOTFILE_DIR/.zshenv"
-        "$DOTFILE_DIR/.zshrc"
-        "$DOTFILE_DIR/.gitconfig"
-        "$DOTFILE_DIR/.vimrc"
-        "$CONFIG_DIR/vscode-settings.json"
-        "$CONFIG_DIR/nvchad.custom"
-        "$CONFIG_DIR/tmux.conf"
-        "$CONFIG_DIR/alacritty.toml"
-    )
-
-    local END_FILES=(
-        "$HOME/.zshenv"
-        "$HOME/.zshrc"
-        "$HOME/.gitconfig"
-        "$HOME/.vimrc"
-        "$vscode_user_dir/settings.json"
-        "$HOME/.config/nvim/lua/custom"
-        "$HOME/.config/tmux/tmux.conf"
-        "$HOME/.config/alacritty/alacritty.toml"
-    )
-
-    local INDEX=0
-
-    printf "Creating symbolic links, from %s...\n" "$DIR"
-    for FILE in "${END_FILES[@]}"; do
-        local orig_file="${ORIG_FILES[INDEX]}"
-        printf "'%s' => '%s'\n" "$orig_file" "$FILE"
-        
-        # Remove directories for symlinks
-        if [[ -d ${ORIG_FILES[INDEX]} ]]; then
-            if [[ -d "$FILE" ]]; then
-                rm -rf "$FILE"
-            fi
-        else 
-            mkdir -p "$(dirname "$FILE")"
-        fi
-
-        ln -sf "$orig_file" "$FILE"
-        ((INDEX++))
-    done
-    printf "...Done\n"
-}
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 ##
 # Function to strip dots and double dots from a given path
@@ -62,4 +9,30 @@ strip_path() {
     echo $PATH
 }
 
-main
+main() {
+    # get the absolute path to the setup dir
+    local DOTFILE_DIR=$(strip_path "$SCRIPT_DIR/../dotfiles")
+    local CONFIG_DIR=$(strip_path "$SCRIPT_DIR/../config")
+
+    printf "\nCreating symbolic links, from %s...\n" "$DOTFILE_DIR"
+    for dotfile in "$DOTFILE_DIR"/*; do
+        local target_path="$HOME"/"$(basename "$dotfile")"
+        printf "%s => %s\n" "$target_path" "$dotfile"
+        ln -sf "$target_path" "$dotfile"
+    done
+
+    printf "\nCreating symbolic links, from %s...\n" "$CONFIG_DIR"
+    if [ -d "$XDG_CONFIG_HOME" ]; then
+        for entry in "$CONFIG_DIR"/*; do
+            local target_path="$XDG_CONFIG_HOME"/"$(basename "$entry")"
+            printf "%s => %s\n" "$target_path" "$entry"
+            ln -sf "$target_path" "$entry"
+        done
+    else 
+        printf "WARNING: 'XDG_CONFIG_HOME' not specified'"
+    fi
+
+    printf "...Done\n"
+}
+
+main $@

@@ -41,6 +41,9 @@ alias unzip-gzip="tar -xzvf"
 alias unzip-bzip="tar -xjvf"
 alias ssh-config="$EDITOR $SSH_DIR/config"
 alias google="w3m google.com"
+alias vim="nvim"
+alias spotify="ncspot"
+
 #
 # TMUX as a singleton
 alias tmux="(tmux list-sessions && tmux attach) || echo Starting Server && tmux"
