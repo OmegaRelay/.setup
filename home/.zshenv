@@ -21,4 +21,6 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 
 export PATH="$(python3 -m site --user-base)/bin:$PATH"
 
+export PATH=$HOME/.gem/bin:$PATH
+
 export EDITOR=vim
