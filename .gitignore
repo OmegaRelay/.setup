@@ -1,2 +1,5 @@
 .gitconfig-*
 /tmp/
+
+# lazy.nvim lock file
+lazy-lock.json
