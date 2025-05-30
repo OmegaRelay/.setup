@@ -52,6 +52,13 @@ alias tmux="(tmux list-sessions && tmux attach) || echo Starting Server && tmux"
 if [[ "$OSTYPE" == "darwin"* ]]; then 
     alias lsusb="system_profiler SPUSBDataType"
     alias x64="env /usr/bin/arch -x86_64 /bin/zsh --login"
+
+	# Renode
+	RENODE_APP_PATH="/Applications/Renode.app" 
+	if [[ -d "$RENODE_APP_PATH" ]]; then
+		alias renode="mono $RENODE_APP_PATH/Contents/MacOS/bin/Renode.exe"
+		alias renode-test="$RENODE_APP_PATH/Contents/MacOS/tests/renode-test"
+	fi
 fi
 
 
