@@ -2,7 +2,7 @@
     defaultBranch=main
 [core]
     editor = vim
-    excludesfile = /Users/theis/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [alias]
     st = status
     br = branch
@@ -16,8 +16,3 @@
     tree = "log --oneline --graph --decorate --all"
 [include]
     path = ~/.gitconfig-local
-[commit]
-    template = /Users/theis/.stCommitMsg
-[user]
-	name = Theis
-	email = theismejnertsen@gmail.com
