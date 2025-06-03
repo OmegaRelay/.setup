@@ -4,6 +4,11 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jj", "<esc>")
 
+vim.keymap.set("n", "<leader>bd", function() 
+    vim.cmd.bdelete()
+    vim.cmd.Ex()
+end)
+
 -- Search and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
