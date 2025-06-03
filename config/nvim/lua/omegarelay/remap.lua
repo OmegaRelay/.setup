@@ -1,13 +1,13 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("i", "jj", "<esc>")
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open File Explorer"})
+vim.keymap.set("i", "jj", "<esc>", {desc = "Escape Insert Mode"})
 
 vim.keymap.set("n", "<leader>bd", function() 
     vim.cmd.bdelete()
     vim.cmd.Ex()
-end)
+end, {desc = "Close Buffer"})
 
 -- Search and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -32,5 +32,5 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd.so()
-end)
+end, {desc = "Source File"})
 

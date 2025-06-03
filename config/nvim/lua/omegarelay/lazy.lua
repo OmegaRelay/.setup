@@ -15,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)
+vim.keymap.set("n", "<leader>l", vim.cmd.Lazy, { desc = "Open [L]azy" })
 
 require("lazy").setup({
     spec = "omegarelay.lazy_plugins",
