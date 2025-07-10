@@ -15,11 +15,11 @@ return {
         -- Main LSP Configuration
         'neovim/nvim-lspconfig',
         dependencies = {
-            -- Automatically install LSPs and related tools to stdpath for Neovim
-            -- Mason must be loaded before its dependents so we need to set it up here.
-            -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
             'mason-org/mason.nvim',
             'mason-org/mason-lspconfig.nvim',
+
+            -- Used to find symbols
+            'ibhagwan/fzf-lua',
 
             -- Useful status updates for LSP.
             'j-hui/fidget.nvim',
@@ -44,6 +44,8 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
 
+                    local finder = require('fzf-lua')
+
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
                     map('grn', vim.lsp.buf.rename, '[G]lobally [R]e[n]ame variable under cursor')
@@ -53,27 +55,27 @@ return {
                     -- map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
                     -- Find references for the word under your cursor.
-                    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]efe[r]ences')
+                    map('grr', finder.lsp_references, '[G]oto [R]efe[r]ences')
 
                     -- Jump to the implementation of the word under your cursor.
                     --  Useful when your language has ways of declaring types without an actual implementation.
-                    map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+                    map('gI', finder.lsp_implementations, '[G]oto [I]mplementation')
 
-                    map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+                    map('gd', finder.lsp_definitions, '[G]oto [D]efinition')
                     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
                     -- Fuzzy find all the symbols in your current document.
                     --  Symbols are things like variables, functions, types, etc.
-                    map('gO', require('telescope.builtin').lsp_document_symbols, 'Open [D]ocument Symbols')
+                    map('gO', finder.lsp_document_symbols, 'Open [D]ocument Symbols')
 
                     -- Fuzzy find all the symbols in your current workspace.
                     --  Similar to document symbols, except searches over your entire project.
-                    map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open [W]orkspace Symbols')
+                    map('gW', finder.lsp_workspace_symbols, 'Open [W]orkspace Symbols')
 
                     -- Jump to the type of the word under your cursor.
                     --  Useful when you're not sure what type a variable is and you want to see
                     --  the definition of its *type*, not where it was *defined*.
-                    map('gy', require('telescope.builtin').lsp_type_definitions, '[G]oto T[y]pe Definition')
+                    map('gy', finder.lsp_typedefs, '[G]oto T[y]pe Definition')
 
                     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
                     ---@param client vim.lsp.Client
@@ -88,12 +90,28 @@ return {
                         end
                     end
 
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-                        map('<leader>th', function()
-                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                        end, '[T]oggle Inlay [H]ints')
-                    end
+                    -- local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    -- if not client then return end
+                    -- if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+                    --     map('<leader>th', function()
+                    --         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+                    --     end, '[T]oggle Inlay [H]ints')
+                    -- end
+                    --
+                    -- if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_formatting, event.buf) then
+                    --     if vim.bo[event.buf].filetype == 'c' then
+                    --         return
+                    --     end
+                    --     if vim.bo[event.buf].filetype == 'h' then
+                    --         return
+                    --     end
+                    --     vim.api.nvim_create_autocmd('BufWritePre', {
+                    --         buffer = event.buf,
+                    --         callback = function()
+                    --             vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
+                    --         end,
+                    --     })
+                    -- end
                 end,
             })
 
