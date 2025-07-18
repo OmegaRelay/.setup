@@ -74,15 +74,77 @@
     "cmake.configureOnOpen": true,
     "cmake.showOptionsMovedNotification": false,
     "todo-tree.general.tags": [
-        "@todo",
         "TODO",
+        "@todo",
+        "\\todo",
         "todo",
         "Todo",
-        "ToDo"
+        "ToDo",
+        "NOTE",
+        "@note",
+        "\\note",
+        "WARNING",
+        "@warning",
+        "\\warning",
+        "FIXME",
+        "FIXIT",
+        "FIX",
+        "BUG",
+        "@bug",
+        "\\bug",
     ],
+    "todo-tree.general.tagGroups": {
+        "TODO": [
+            "@todo",
+            "\\todo",
+            "todo",
+            "Todo",
+            "ToDo"
+        ],
+        "NOTE": [
+            "@note",
+            "\\note"
+        ],
+        "WARNING": [
+            "@warning",
+            "\\warning",
+        ],
+        "FIXME": [
+            "FIXIT",
+            "FIX"
+        ],
+        "BUG": [
+            "@bug",
+            "\\bug"
+        ],
+    },
+    "todo-tree.highlights.defaultHighlight": {
+        "type": "tag",
+        "foreground": "#000000",
+        "background": "#00C0C0",
+        "opacity": 60,
+        "iconColour": "#00C0C0",
+        "gutterIcon": true
+    },
     "todo-tree.highlights.customHighlight": {
-        "@todo": {
-            "background": "#FFFFFF"
+        "NOTE": {
+            "icon": "info",
+        },
+        "WARNING": {
+            "icon": "alert",
+            "background": "#C0C000",
+            "iconColour": "#C0C000",
+            "gutterIcon": true
+        },
+        "FIXME": {
+            "background": "#C00000",
+            "iconColour": "#C00000",
+            "gutterIcon": true
+        },
+        "BUG": {
+            "background": "#C00000",
+            "iconColour": "#C00000",
+            "gutterIcon": true
         }
     },
     "editor.rulers": [
@@ -113,7 +175,7 @@
     ],
     "python.createEnvironment.trigger": "off",
     "yaml.schemas": {
-        "file:///Users/theis/.vscode/extensions/atlassian.atlascode-3.8.2/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///Users/theis/.vscode/extensions/atlassian.atlascode-3.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
@@ -151,5 +213,6 @@
     "files.exclude": {
         "**/.DS_Store": false,
         "**/.git": false
-    }
+    },
+    "git.replaceTagsWhenPull": true
 }
