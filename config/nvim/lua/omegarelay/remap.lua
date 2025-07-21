@@ -1,12 +1,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open File Explorer"})
 vim.keymap.set("i", "jj", "<esc>", {desc = "Escape Insert Mode"})
 
 vim.keymap.set("n", "<leader>bd", function() 
     vim.cmd.bdelete()
-    vim.cmd.Ex()
 end, {desc = "Close Buffer"})
 
 -- Search and replace
