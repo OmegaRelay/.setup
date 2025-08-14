@@ -14,11 +14,11 @@ return {
             group_empty = true,
         },
         filters = {
-            dotfiles = true,
+            enable = false,
         },
     },
-    config = function ()
-        require("nvim-tree").setup()
+    config = function (_, opts)
+        require("nvim-tree").setup(opts)
 
         local map = function(keys, func, desc, mode)
             mode = mode or 'n'
