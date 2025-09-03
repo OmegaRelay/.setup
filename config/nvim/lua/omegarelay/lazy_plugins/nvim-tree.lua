@@ -1,23 +1,33 @@
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
-        {"nvim-tree/nvim-web-devicons"}
+        { "nvim-tree/nvim-web-devicons" }
     },
     opts = {
+        actions = {
+            open_file = {
+                quit_on_open = true,
+                eject = false,
+            },
+            remove_file = {
+                close_window = true,
+            },
+        },
         sort = {
             sorter = "case_sensitive",
         },
         view = {
-            width = 30,
+            width = 100,
         },
         renderer = {
             group_empty = true,
+            highlight_opened_files = "icon",
         },
         filters = {
             enable = false,
         },
     },
-    config = function (_, opts)
+    config = function(_, opts)
         require("nvim-tree").setup(opts)
 
         local map = function(keys, func, desc, mode)
