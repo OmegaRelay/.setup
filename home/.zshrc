@@ -43,6 +43,7 @@ alias ssh-config="$EDITOR $SSH_DIR/config"
 alias google="w3m google.com"
 alias vim="nvim"
 alias spotify="ncspot"
+alias venv="source .venv/bin/activate"
 
 # MacOS Specific
 if [[ "$OSTYPE" == "darwin"* ]]; then 
