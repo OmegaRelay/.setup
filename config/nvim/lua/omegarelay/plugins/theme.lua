@@ -10,7 +10,7 @@ return {
     {
         'sainnhe/everforest',
         config = function()
-            ApplyColorScheme()
+            -- ApplyColorScheme()
         end,
     },
     {
