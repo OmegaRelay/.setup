@@ -90,28 +90,28 @@ return {
                         end
                     end
 
-                    -- local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    -- if not client then return end
-                    -- if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-                    --     map('<leader>th', function()
-                    --         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                    --     end, '[T]oggle Inlay [H]ints')
-                    -- end
-                    --
-                    -- if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_formatting, event.buf) then
-                    --     if vim.bo[event.buf].filetype == 'c' then
-                    --         return
-                    --     end
-                    --     if vim.bo[event.buf].filetype == 'h' then
-                    --         return
-                    --     end
-                    --     vim.api.nvim_create_autocmd('BufWritePre', {
-                    --         buffer = event.buf,
-                    --         callback = function()
-                    --             vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
-                    --         end,
-                    --     })
-                    -- end
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    if not client then return end
+                    if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+                        map('<leader>th', function()
+                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+                        end, '[T]oggle Inlay [H]ints')
+                    end
+
+                    if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_formatting, event.buf) then
+                        if vim.bo[event.buf].filetype == 'c' then
+                            return
+                        end
+                        if vim.bo[event.buf].filetype == 'h' then
+                            return
+                        end
+                        vim.api.nvim_create_autocmd('BufWritePre', {
+                            buffer = event.buf,
+                            callback = function()
+                                vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
+                            end,
+                        })
+                    end
                 end,
             })
 
