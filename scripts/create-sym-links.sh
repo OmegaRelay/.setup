@@ -30,23 +30,27 @@ main() {
     done
 
     printf "\nCreating symbolic links, from %s...\n" "$CONFIG_DIR"
-    if [ -d "$XDG_CONFIG_HOME" ]; then
-        for entry in "$CONFIG_DIR"/*; do
-            local target_path="$XDG_CONFIG_HOME"/"$(basename "$entry")"
-
-            # Remove directories before symlinking or will create recursive links
-            if [ -d "$entry" ] && [ -d "$target_path" ]; then
-                    rm -rf "$target_path"
-            fi
-
-            if [ -d "$entry" ] || [ -f "$entry" ]; then
-                printf "%s => %s\n" "$target_path" "$entry"
-                ln -sf "$entry" "$target_path"
-            fi
-        done
-    else 
-        printf "WARNING: 'XDG_CONFIG_HOME' not specified'"
+    if [ -z "$XDG_CONFIG_HOME" ]; then
+        XDG_CONFIG_HOME="$HOME/.config"
+        printf "WARNING: 'XDG_CONFIG_HOME' not specified, assuming '$XDG_CONFIG_HOME'\n"
     fi
+    if [ ! -d "$XDG_CONFIG_HOME" ]; then
+		mkdir -p "$XDG_CONFIG_HOME"
+	fi
+	
+	for entry in "$CONFIG_DIR"/*; do
+		local target_path="$XDG_CONFIG_HOME"/"$(basename "$entry")"
+
+		# Remove directories before symlinking or will create recursive links
+		if [ -d "$entry" ] && [ -d "$target_path" ]; then
+				rm -rf "$target_path"
+		fi
+
+		if [ -d "$entry" ] || [ -f "$entry" ]; then
+			printf "%s => %s\n" "$target_path" "$entry"
+			ln -sf "$entry" "$target_path"
+		fi
+	done
 
     printf "...Done\n"
 }
