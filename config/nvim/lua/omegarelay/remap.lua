@@ -3,9 +3,13 @@ vim.g.maplocalleader = " "
 
 vim.keymap.set("i", "jj", "<esc>", {desc = "Escape Insert Mode"})
 
-vim.keymap.set("n", "<leader>bd", function() 
-    vim.cmd.bdelete()
-end, {desc = "Close Buffer"})
+vim.keymap.set("n", "<leader>bd", function()
+    vim.cmd('bd!')
+end, { desc = "Close Buffer" })
+
+vim.keymap.set("n", "<leader>bD", function()
+    vim.cmd('%bd!')
+end, { desc = "Close All Buffers" })
 
 -- Search and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
