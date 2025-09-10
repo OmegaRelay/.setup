@@ -6,28 +6,8 @@
 
 @define-color background #000000;
 
-
 window#waybar {
     all:unset
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
 }
 
 #workspaces button {
@@ -38,6 +18,7 @@ button:hover {
 
 #workspaces button:hover {
     background: alpha(@background, 0.6);
+    border-color: #04c8ba;
 }
 
 #workspaces button.focused {
@@ -49,11 +30,7 @@ button:hover {
     background-color: #eb4d4b;
 }
 
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
+#mode,
 #clock,
 #battery,
 #cpu,
@@ -78,7 +55,7 @@ button:hover {
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 0 0px;
 }
 
 .modules-left {
@@ -115,28 +92,20 @@ button:hover {
     margin-right: 0;
 }
 
-#battery {
-    border: 2px solid alpha(#ffffff, 0.5);
-    background-color: #ffffff;
-    color: #000000;
-}
-
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: #26A65B;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: @background;
+        color: @background;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    color: #f53c3c;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -150,24 +119,22 @@ button:hover {
 }
 
 #power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
+    color: #f53c3c;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
+    color: #2980b9;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
+    color: #2ecc71;
 }
 
 label:focus {
     background-color: #000000;
 }
 
+#battery,
 #cpu,
 #memory,
 #disk,
@@ -181,6 +148,15 @@ label:focus {
 #idle_inhibitor {
     border: 2px solid alpha(#ffffff, 0.5);
     background: alpha(@background, 0.6);
+}
+
+#battery:hover,
+#tray:hover,
+#network:hover,
+#wireplumber:hover,
+#idle_inhibitor:hover,
+#pulseaudio:hover {
+    border-color: #04c8ba;
 }
 
 #network.disconnected {
@@ -202,11 +178,6 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
 }
 
 #mpd {
