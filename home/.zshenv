@@ -1,6 +1,6 @@
 ## Path additions
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:/opt/bin"
+export PATH="$HOME/.local/bin:$PATH:"
+export PATH="/opt/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -21,6 +21,6 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 
 export PATH="$(python3 -m site --user-base)/bin:$PATH"
 
-export PATH=$HOME/.gem/bin:$PATH
+export PATH="$HOME/.gem/bin:$PATH"
 
 export EDITOR=vim
