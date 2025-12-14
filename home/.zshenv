@@ -7,10 +7,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export SSH_DIR="$HOME/.ssh"
 
 export CARGO_DIR="$HOME/.cargo"
-[ -s "$CARGO_DIR/env" ] && . "$CARGO_DIR/env"
+[ -s "$CARGO_DIR/env" ] && source "$CARGO_DIR/env"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 export GO_DIR="$HOME/go"
 export PATH="$PATH:$GO_DIR/bin"
