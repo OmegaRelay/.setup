@@ -1,7 +1,7 @@
 [init] 
     defaultBranch=main
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore_global
 [alias]
     st = status
