@@ -98,7 +98,22 @@ chpwd() {
 ### Prompt setup ###
 precmd () { vcs_info }
 setopt PROMPT_SUBST
-DIR='%F{cyan}%2d%f'
-PROMPT='
-%F{green}%n%f:'$DIR' ${vcs_info_msg_0_} 
-%F{red}%w %T%f %(!. §.->) '
+
+PROMPT_DIR='%F{cyan}%2d%f'
+PROMPT_USER='%F{green}%n%f'
+PROMPT_TIME='%F{red}%w %T%f'
+PROMPT="$PROMPT_USER:$PROMPT_DIR ${vcs_info_msg_0_} 
+$PROMPT_TIME %(!. §.->) "
+
+del-prompt-accept-line() {
+    PROMPT="$PROMPT_TIME %(!. §.->) "
+    zle reset-prompt
+    PROMPT="%(?. .
+%F{red}  %?%f)
+$PROMPT_USER:$PROMPT_DIR ${vcs_info_msg_0_} 
+$PROMPT_TIME %(!. §.->) "
+    zle accept-line
+}
+
+zle -N del-prompt-accept-line
+bindkey "^M" del-prompt-accept-line
