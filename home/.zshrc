@@ -4,6 +4,7 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' verbose false
 zstyle :compinstall filename '~/.zshrc'
+fpath=(~/.docker/completions $fpath)
 
 autoload -Uz compinit
 compinit

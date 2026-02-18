@@ -174,9 +174,6 @@
         "workbench.action.tasks.runTask"
     ],
     "python.createEnvironment.trigger": "off",
-    "yaml.schemas": {
-        "file:///Users/theis/.vscode/extensions/atlassian.atlascode-3.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-    },
     "redhat.telemetry.enabled": false,
     "workbench.startupEditor": "none",
     "nrf-connect.enableTelemetry": false,
@@ -214,5 +211,6 @@
         "**/.DS_Store": false,
         "**/.git": false
     },
-    "git.replaceTagsWhenPull": true
+    "git.replaceTagsWhenPull": true,
+    "zephyr-workbench.pathToEnvScript": "/Users/theis/.zinstaller/env.sh"
 }
