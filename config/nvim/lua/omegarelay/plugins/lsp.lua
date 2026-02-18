@@ -77,6 +77,10 @@ return {
                     --  the definition of its *type*, not where it was *defined*.
                     map('gy', finder.lsp_typedefs, '[G]oto T[y]pe Definition')
 
+                    map('bf', function()
+                        vim.lsp.buf.format({ bufnr = event.buf })
+                    end, '[B]uffer [F]ormat')
+
                     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
                     ---@param client vim.lsp.Client
                     ---@param method vim.lsp.protocol.Method
