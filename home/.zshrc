@@ -67,6 +67,28 @@ bindkey '^xe' edit-command-line
 
 bindkey ' ' magic-space
 
+### Change Dir Hook ###
+# Python venv loader
+chpwd_python() {
+    if [ -d .venv ]; then
+        source .venv/bin/activate
+    elif [ -d venv ]; then
+        source venv/bin/activate
+    elif [ -n "$VIRTUAL_ENV" ]; then
+        deactivate
+    fi
+}
+
+chpwd_nvm() {
+    if [ -f .nvmrc ]; then
+        nvm use
+    fi
+}
+
+chpwd() {
+    chpwd_python
+    chpwd_nvm
+}
 
 ### Extra Files to Source ###
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
