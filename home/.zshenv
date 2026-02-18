@@ -24,4 +24,6 @@ export PATH="$(python3 -m site --user-base)/bin:$PATH"
 export PATH="$HOME/.gem/bin:$PATH"
 export PATH="usr/local/go/bin:$PATH"
 
-export EDITOR=vim
+export EDITOR="$(which nvim)"
+
+export FZF_DEFAULT_COMMAND="rg"
