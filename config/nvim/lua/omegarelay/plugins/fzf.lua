@@ -20,10 +20,15 @@ return {
         end, "[F]ind [F]ile")
         map('<leader>fs', function()
             builtin.live_grep({
+                prompt = "Grep❯ "
+            })
+        end, "[F]ind [S]tring")
+        map('<leader>fh', function()
+            builtin.live_grep({
                 prompt = "Grep❯ ",
                 no_ignore = true
             })
-        end, "[F]ind [S]tring")
+        end, "[F]ind [H]idden String")
         map('<leader>fr', function()
             builtin.live_grep({
                 resume = true,
@@ -51,5 +56,8 @@ return {
         map('<leader>fgd', function()
             builtin.git_diff({})
         end, "[F]ind [G]it [D]iff")
+
+        map('<leader>fcw', builtin.lsp_live_workspace_symbols, '[F]ind Symbols in [W]orkspace')
+        map('<leader>fcd', builtin.lsp_document_symbols, '[F]ind Symbols in [D]ocument')
     end
 }
