@@ -59,6 +59,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	fi
 fi
 
+### Keybinds ###
+# Open buffer for command editing
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+
+bindkey ' ' magic-space
+
 
 ### Extra Files to Source ###
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
