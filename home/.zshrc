@@ -57,6 +57,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 		alias renode="mono $RENODE_APP_PATH/Contents/MacOS/bin/Renode.exe"
 		alias renode-test="$RENODE_APP_PATH/Contents/MacOS/tests/renode-test"
 	fi
+else
+    alias open="xdg-open"
 fi
 
 ### Keybinds ###
