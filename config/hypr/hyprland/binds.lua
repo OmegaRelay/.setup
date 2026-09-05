@@ -4,10 +4,14 @@ local keyVimDown = "J"
 local keyVimUp = "K"
 local keyVimRight = "L"
 
+local rofiRbwCommonArgs = "--selector wofi --typer wtype --clipboarder wl-copy --clear-after 10 --use-notify-send"
+
 local cmdTerminal = "alacritty"
 local cmdBrowser = "zen-browser"
 local cmdFileManager = "dolphin"
-local cmdMenu = "wofi --show drun -I"
+local cmdMenu = "wofi --show drun -I -p \"\""
+local cmdMenuPwdCopy = "rofi-rbw -a copy -r \"Copy Password\" " .. rofiRbwCommonArgs
+local cmdMenuPwdType = "rofi-rbw -a type -r \"Type Password\" " .. rofiRbwCommonArgs
 local cmdLockScreen = "hyprlock"
 local cmdScreenShotSave = "hyprshot -m region --output-folder ~/Pictures/screenshots"
 local cmdScreenShotCopy = "hyprshot -m region --clipboard-only"
@@ -20,6 +24,8 @@ hl.bind(keyMod .. " + F", hl.dsp.window.float())
 hl.bind(keyMod .. " + ESCAPE", hl.dsp.exec_cmd(cmdLockScreen))
 hl.bind(keyMod .. " + RETURN", hl.dsp.exec_cmd(cmdTerminal))
 hl.bind(keyMod .. " + SPACE", hl.dsp.exec_cmd(cmdMenu))
+hl.bind(keyMod .. " + P", hl.dsp.exec_cmd(cmdMenuPwdCopy))
+hl.bind(keyMod .. " + ALT + P", hl.dsp.exec_cmd(cmdMenuPwdType))
 hl.bind(keyMod .. " + B", hl.dsp.exec_cmd(cmdBrowser))
 hl.bind(keyMod .. " + E", hl.dsp.exec_cmd(cmdFileManager))
 
