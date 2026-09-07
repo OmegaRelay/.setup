@@ -1,2 +1,7 @@
 git:
   localBranchSortOrder: recency
+
+keybinding:
+  commits:
+    moveDownCommit: J
+    moveUpCommit: K
