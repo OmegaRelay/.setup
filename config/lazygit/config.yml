@@ -1,5 +1,17 @@
+gui:
+  skipRewordInEditorWarning: true
+  nerdFontsVersion: "3"
+
+
 git:
+  autoFetch: false
+  autoDetectExternalChanges: false
   localBranchSortOrder: recency
+  parseEmoji: true
+  commit:
+    signOff: true
+
+notARepository: quit
 
 keybinding:
   commits:
