@@ -1,0 +1,47 @@
+{
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "p",
+        description: Some("Password Manager (copy)"),
+    ): Spawn("rofi-rbw -a copy -r \"Copy Password\" --selector wofi --typer wtype --clipboarder wl-copy --clear-after 10 --use-notify-send"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+    ): System(Terminal),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "space",
+        description: Some("App Launcher"),
+    ): Spawn("wofi --show drun -I -p \"Launch Application\""),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "slash",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "t",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "p",
+        description: Some("Password Manager (type)"),
+    ): Spawn("rofi-rbw -a type -r \"Type Password\" --selector wofi --typer wtype --clipboarder wl-copy --clear-after 10 --use-notify-send"),
+}
