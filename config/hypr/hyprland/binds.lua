@@ -16,11 +16,10 @@ local cmdLockScreen = "hyprlock"
 local cmdScreenShotSave = "hyprshot -m region --output-folder ~/Pictures/screenshots"
 local cmdScreenShotCopy = "hyprshot -m region --clipboard-only"
 
-hl.bind(keyMod .. " + ALT + SHIFT + M", hl.dsp.exit())
-
 hl.bind(keyMod .. " + Q", hl.dsp.window.close())
 hl.bind(keyMod .. " + F", hl.dsp.window.float())
 
+hl.bind(keyMod .. " + SHIFT + ESCAPE", hl.dsp.exit())
 hl.bind(keyMod .. " + ESCAPE", hl.dsp.exec_cmd(cmdLockScreen))
 hl.bind(keyMod .. " + RETURN", hl.dsp.exec_cmd(cmdTerminal))
 hl.bind(keyMod .. " + SPACE", hl.dsp.exec_cmd(cmdMenu))
