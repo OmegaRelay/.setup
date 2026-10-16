@@ -15,6 +15,7 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 fi
 [ -e "$CARGO_DIR/env" ] && source "$CARGO_DIR/env"
 [ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -e "$HOME/.zshenv.local" ] && . "$HOME/.zshenv.local"
 
 ## Path modifications
 # Prepend
