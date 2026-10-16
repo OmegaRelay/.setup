@@ -76,7 +76,8 @@ chpwd_python() {
         source .venv/bin/activate
     elif [ -d venv ]; then
         source venv/bin/activate
-    elif [ -n "$VIRTUAL_ENV" ]; then
+    elif [ -n "$VIRTUAL_ENV" ] && type deactivate > /dev/null; then
+        echo "$VIRTUAL_ENV"
         deactivate
     fi
 }
