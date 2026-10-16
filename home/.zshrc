@@ -119,3 +119,9 @@ $PROMPT_TIME %(!. §.->) "
 
 zle -N del-prompt-accept-line
 bindkey "^M" del-prompt-accept-line
+
+# Actions on terminal creation
+if [ -z "$ZSH_TERMINAL_CREATED" ]; then
+    chpwd
+    export ZSH_TERMINAL_CREATED=1
+fi
